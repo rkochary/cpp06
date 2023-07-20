@@ -22,7 +22,9 @@ ScalarConverter::~ScalarConverter()
 
 void ScalarConverter::checkInf()//kisata,mtaci dzi
 {
-    if(str == "nanf" || str == "nan")
+   // char *r;
+  // std::cout <<str.length() << std::endl;
+    if((str == "nanf" && str.length() == 4) || (str == "nan" && str.length() == 3))
         type = NOT_A_NUMBER;
     else if(str == "+inff" || str == "+inf" || str == "inff" || str == "inf")
         type = PLUS_INFINITY;
@@ -37,7 +39,15 @@ void ScalarConverter::convert(char* n)
 {
     char *r;
     str = n;
-    double num = strtod(n,&r);
+    double num;
+    if(str.length() > 1 && !strtod(n,&r))
+    {
+        std::cout  << "impossible chatacter" << std::endl;
+        return ;
+    }
+    else{
+     num = strtod(n,&r);
+    }
     checkInf();
     if(type == NOT_A_NUMBER)
     {
@@ -93,6 +103,7 @@ void ScalarConverter::convert(char* n)
         char character = static_cast<char>(doubleNum);
         int integer = static_cast<int>(doubleNum);
         float floatNum = static_cast<float>(doubleNum);
+        //std::cout << character <<std::endl;
         if(isprint(character))
             std::cout << "char: " << character << std::endl;
         else
