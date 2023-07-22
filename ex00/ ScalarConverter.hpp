@@ -22,18 +22,15 @@ class  ScalarConverter
         static bool isDouble();
         static bool isChar();
         static void checkInf();
-    public:
         ScalarConverter();
         ScalarConverter(const ScalarConverter &obj);
         ScalarConverter operator=(const ScalarConverter &obj);
         ~ScalarConverter();
+    public:
         static void convert(char* n);
 };
 
 #endif
 
-//strtod 
-//setprecision <iomanip>
-// literals -> INFINITY -INFINITY +INFINITY NAN
 
  
